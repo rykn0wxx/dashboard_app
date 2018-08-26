@@ -1,0 +1,31 @@
+html, body {
+	height: 100%;
+}
+html {
+	font-size: 62.5%;
+	line-height: 1.5;
+}
+body {
+	font-size: 1.4rem;
+	font-family: $base-font;
+	line-height: 1.5;
+	background-color: $body-bg;
+	color: $body-fc;
+	font-weight: 400;
+}
+
+/* Scrollbar (only webkit based browsers: chrome, chromium, yandex, etc)
+   ========================================================================== */
+::-webkit-scrollbar {
+	width:5px
+}
+::-webkit-scrollbar-thumb {
+	background:#999;
+	cursor:grab
+}
+::-webkit-scrollbar-thumb:hover {
+	background:#555
+}
+::-webkit-scrollbar-thumb:active {
+	background:#333
+}

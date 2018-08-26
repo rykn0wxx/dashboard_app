@@ -1,0 +1,37 @@
+/************
+ * Layout
+ ************/
+@mixin layouts_for_breakpoint($name:null) {
+	@include flex-properties-for-name($name);
+	@include layout-for-name($name);
+}
+
+@include layouts_for_breakpoint();
+@include layout-padding-margin();
+
+.md-content {
+  display: block;
+  position: relative;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  &.md-scroll-y {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  &.md-scroll-x {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  @media print {
+    overflow: visible !important;
+	}
+}
+
+.main-content {
+	padding: 8px;
+	position: relative;
+	flex: 1 1 auto;
+	flex-basis: auto;
+	display: flex;
+	flex-direction: column;
+}

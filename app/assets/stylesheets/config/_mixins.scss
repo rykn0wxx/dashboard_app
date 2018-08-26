@@ -1,0 +1,282 @@
+@mixin md-shadow-bottom-z-1() {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+@mixin md-shadow-bottom-z-2() {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+}
+@mixin md-title() {
+  font-size: $title-font-size-base;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+}
+@mixin md-body-1() {
+  font-size: $body-font-size-base;
+  font-weight: 400;
+  letter-spacing: 0.010em;
+  line-height: rem(2);
+}
+@mixin md-body-2() {
+  font-size: $body-font-size-base;
+  font-weight: 500;
+  letter-spacing: 0.010em;
+  line-height: rem(2.4);
+}
+@mixin md-subhead() {
+  font-size: $subhead-font-size-base;
+  font-weight: 400;
+  letter-spacing: 0.010em;
+  line-height: rem(2.4);
+}
+
+@mixin clearfix() {
+	&::before, &::after {
+		content: ' ';
+		display: table;
+	}
+	&::after {
+		clear: both;
+	}
+}
+
+@mixin layout-for-name($name: null) {
+  @if $name == null { $name : '';          }
+  @if $name != ''   { $name : '-#{$name}'; }
+  .layout#{$name}, .layout#{$name}-column, .layout#{$name}-row {
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .layout#{$name}-column {  flex-direction: column;     }
+  .layout#{$name}-row    {  flex-direction: row;        }
+}
+@mixin flex-properties-for-name($name: null) {
+  $flexName: 'flex';
+  @if $name != null {
+    $flexName: 'flex-#{$name}';
+    $name : '-#{$name}';
+  } @else {
+    $name : '';
+  }
+
+  .#{$flexName}             { flex: 1;         box-sizing: border-box; }  // === flex: 1 1 0%;
+
+  .#{$flexName}-grow        { flex: 1 1 100%;  box-sizing: border-box; }
+  .#{$flexName}-initial     { flex: 0 1 auto;  box-sizing: border-box; }
+  .#{$flexName}-auto        { flex: 1 1 auto;  box-sizing: border-box; }
+  .#{$flexName}-none        { flex: 0 0 auto;  box-sizing: border-box; }
+  .#{$flexName}-noshrink    { flex: 1 0 auto;  box-sizing: border-box; }
+  .#{$flexName}-nogrow      { flex: 0 1 auto;  box-sizing: border-box; }
+
+  // (1-20) * 5 = 0-100%
+  @for $i from 0 through 20 {
+    $value : #{$i * 5 + '%'};
+
+    .#{$flexName}-#{$i * 5} {
+      flex: 1 1 100%;
+      max-width: #{$value};
+      max-height: 100%;
+      box-sizing: border-box;
+    }
+
+    .layout-row > .#{$flexName}-#{$i * 5} {
+      flex: 1 1 100%;
+      max-width: #{$value};
+      max-height: 100%;
+      box-sizing: border-box;
+
+      // Required by Chrome M48+ due to http://crbug.com/546034
+      @if $i == 0 {  min-width: 0;  }
+    }
+
+    .layout-column > .#{$flexName}-#{$i * 5} {
+      flex: 1 1 100%;
+      max-width: 100%;
+      max-height: #{$value};
+      box-sizing: border-box;
+    }
+
+    .layout#{$name}-row > .#{$flexName}-#{$i * 5} {
+      flex: 1 1 100%;
+      max-width: #{$value};
+      max-height: 100%;
+      box-sizing: border-box;
+
+      // Required by Chrome M48+ due to http://crbug.com/546034
+      @if $i == 0 {  min-width: 0;  }
+    }
+
+    .layout#{$name}-column > .#{$flexName}-#{$i * 5} {
+      flex: 1 1 100%;
+      max-width: 100%;
+      max-height: #{$value};
+      box-sizing: border-box;
+
+      // Required by Chrome M48+ due to http://crbug.com/546034
+      @if $i == 0 {  min-height: 0;  }
+    }
+  }
+
+  @if ($name == '') {
+    .flex-33 { flex: 1 1 100%;  max-width: 33.33%;  max-height: 100%; box-sizing: border-box; }
+    .flex-66 { flex: 1 1 100%;  max-width: 66.66%;  max-height: 100%; box-sizing: border-box; }
+   }
+
+  .layout-row {
+    > .#{$flexName}-33 { flex: 1 1 33.33%;  max-width: 33.33%;  max-height: 100%; box-sizing: border-box; }
+    > .#{$flexName}-66 { flex: 1 1 66.66%;  max-width: 66.66%;  max-height: 100%; box-sizing: border-box; }
+  }
+
+  .layout-column {
+    > .#{$flexName}-33 { flex: 1 1 33.33%;  max-width: 100%;  max-height: 33.33%; box-sizing: border-box; }
+    > .#{$flexName}-66 { flex: 1 1 66.66%;  max-width: 100%;  max-height: 66.66%; box-sizing: border-box; }
+  }
+
+  .layout#{$name}-row {
+    > .#{$flexName}-33 { flex: 1 1 100%;  max-width: 33.33%;  max-height: 100%; box-sizing: border-box; }
+    > .#{$flexName}-66 { flex: 1 1 100%;  max-width: 66.66%;  max-height: 100%; box-sizing: border-box; }
+
+    // Required by Chrome M48+ due to http://crbug.com/546034
+    > .flex { min-width: 0;  }
+  }
+
+  .layout#{$name}-column {
+    > .#{$flexName}-33 { flex: 1 1 100%;  max-width: 100%;  max-height: 33.33%; box-sizing: border-box; }
+    > .#{$flexName}-66 { flex: 1 1 100%;  max-width: 100%;  max-height: 66.66%; box-sizing: border-box; }
+
+    // Required by Chrome M48+ due to http://crbug.com/546034
+    > .flex { min-height: 0; }
+  }
+}
+
+@mixin layout-padding-margin() {
+
+  // NOTE: these`> *` selectors should only be applied for layout="row" or layout="column" children !!
+  .layout-padding-sm > *,
+  .layout-padding    > .flex-sm
+  {
+    padding: $layout-gutter-width / 4;
+  }
+
+  .layout-padding,
+  .layout-padding-gt-sm,
+  .layout-padding-md,
+
+  // NOTE: these`> *` selectors should only be applied for layout="row" or layout="column" children !!
+  .layout-padding        > *,
+  .layout-padding-gt-sm  > *,
+  .layout-padding-md     > *,
+
+  .layout-padding        > .flex,
+  .layout-padding        > .flex-gt-sm,
+  .layout-padding        > .flex-md
+  {
+    padding: $layout-gutter-width / 2;
+  }
+
+  // NOTE: these`> *` selectors should only be applied for layout="row" or layout="column" children !!
+  .layout-padding-gt-md  > *,
+  .layout-padding-lg     > *,
+  .layout-padding-gt-lg  > *,
+
+  .layout-padding        > .flex-gt-md,
+  .layout-padding        > .flex-lg,
+  .layout-padding        > .flex-lg,
+  .layout-padding        > .flex-gt-lg
+  {
+    padding: $layout-gutter-width / 1;
+  }
+
+  // Margin enhancements
+
+  .layout-margin-sm      > *,
+  .layout-margin         > .flex-sm
+  {
+    margin: $layout-gutter-width / 4;
+  }
+
+  .layout-margin,
+  .layout-margin-gt-sm,
+  .layout-margin-md,
+
+  // NOTE: these`> *` selectors should only be applied for layout="row" or layout="column" children !!
+  .layout-margin         > *,
+  .layout-margin-gt-sm   > *,
+  .layout-margin-md      > *,
+
+  .layout-margin         > .flex,
+  .layout-margin         > .flex-gt-sm,
+  .layout-margin         > .flex-md
+  {
+    margin: $layout-gutter-width / 2;
+  }
+
+  // NOTE: these`> *` selectors should only be applied for layout="row" or layout="column" children !!
+  .layout-margin-gt-md  > *,
+  .layout-margin-lg     > *,
+  .layout-margin-gt-lg  > *,
+
+  .layout-margin        > .flex-gt-md,
+  .layout-margin        > .flex-lg,
+  .layout-margin        > .flex-gt-lg
+  {
+    margin: $layout-gutter-width / 1;
+  }
+
+  .layout-wrap {
+    flex-wrap: wrap;
+  }
+
+  .layout-nowrap {
+      flex-wrap: nowrap;
+  }
+
+  .layout-fill {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+    height: 100%;
+  }
+}
+@mixin dense($prop, $normal, $dense) {
+  #{$prop}: $normal;
+  .md-dense > &:not(.md-dense-disabled),
+  .md-dense :not(.md-dense-disabled) &:not(.md-dense-disabled) {
+    #{$prop}: $dense;
+  }
+}
+
+// Position a FAB button.
+@mixin fab-position($spot, $top: auto, $right: auto, $bottom: auto, $left: auto) {
+  &.md-fab-#{$spot} {
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    position: absolute;
+  }
+}
+
+@mixin fab-all-positions() {
+  @include fab-position(bottom-right, auto, ($button-fab-width - $button-fab-padding)/2, ($button-fab-height - $button-fab-padding)/2, auto);
+  @include fab-position(bottom-left, auto, auto, ($button-fab-height - $button-fab-padding)/2, ($button-fab-width - $button-fab-padding)/2);
+  @include fab-position(top-right, ($button-fab-height - $button-fab-padding)/2, ($button-fab-width - $button-fab-padding)/2, auto, auto);
+  @include fab-position(top-left, ($button-fab-height - $button-fab-padding)/2, auto, auto, ($button-fab-width - $button-fab-padding)/2);
+}
+
+@mixin rtl($prop, $ltr-value, $rtl-value) {
+  #{$prop}: $ltr-value;
+  [dir=rtl] & {
+    #{$prop}: $rtl-value;
+  }
+}
+
+@mixin rtl-prop($ltr-prop, $rtl-prop, $value, $reset-value) {
+  #{$ltr-prop}: $value;
+  [dir=rtl] & {
+    #{$ltr-prop}: $reset-value;
+    #{$rtl-prop}: $value;
+  }
+}

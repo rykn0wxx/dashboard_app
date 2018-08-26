@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" class="rykn0wxx no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="author" content="rykn0wxx" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+		<title>
+			<%= content_for?(:title) ? yield(:title) + " | rykn0wxx" : "rykn0wxx" %>
+		</title>
+		<link rel="icon" type="image/x-icon" href="favicon.ico" />
+		<script type="text/javascript">
+			document.documentElement.className = "rykn0wxx js";
+		</script>
+
+		<%= tag :meta, name: 'turbolinks-root', content: '/' %>
+		<%= tag :meta, name: 'turbolinks-cache-control', content: 'no-preview' %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+		<%= render "shared/styles_css" %>
+  </head>
+
+  <body class="show-sidebar">
+
+		<div class="md-content"> <!-- wrapper -->
+
+			<div class="layout-row">
+
+				<%= render "shared/sidebar" %>
+
+				<div class="layout-column flex content-wrapper">
+
+					<%= render "shared/topbar" %>
+
+					<main class="main-content">
+						<%= yield %>
+					</main>
+				</div>
+
+			</div>
+
+		</div>  <!-- wrapper -->
+
+		<%= render "shared/scripts_js" %>
+  </body>
+</html>

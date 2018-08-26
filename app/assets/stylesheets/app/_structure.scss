@@ -1,0 +1,130 @@
+html, body {
+  height: 100%;
+  position: relative;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+[tabindex='-1']:focus {
+  outline: none;
+}
+.inset {
+  padding: 10px;
+}
+
+a.md-no-style,
+button.md-no-style {
+  font-weight: normal;
+  background-color: inherit;
+  text-align: left;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+select,
+button,
+textarea,
+input {
+  vertical-align: baseline;
+}
+
+input[type="reset"],
+input[type="submit"],
+html input[type="button"],
+button {
+  cursor: pointer;
+  -webkit-appearance: button;
+  &[disabled] {
+    cursor: default;
+  }
+}
+textarea {
+  vertical-align: top;
+  overflow: auto;
+}
+input {
+  &[type="search"] {
+    box-sizing: content-box;
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+    }
+  }
+  &:-webkit-autofill {
+    text-shadow: none;
+  }
+}
+
+.md-visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  text-transform: none;
+  width: 1px;
+}
+
+.md-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.md-shadow-bottom-z-1 {
+  @include md-shadow-bottom-z-1();
+}
+.md-shadow-bottom-z-2 {
+  @include md-shadow-bottom-z-2();
+}
+
+.md-padding {
+  padding: 8px;
+}
+
+.md-margin {
+  margin: 8px;
+}
+
+.md-scroll-mask {
+  position: absolute;
+  background-color: transparent;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  > .md-scroll-mask-bar {
+    display: block;
+    position: absolute;
+    background-color: #fafafa;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 65;
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3)
+  }
+}
+.md-no-momentum {
+  -webkit-overflow-scrolling: auto;
+}
+.md-no-flicker {
+	-webkit-filter: blur(0px);
+	filter: blur(0px);
+}
+
+@media (min-width: $layout-breakpoint-sm) {
+  .md-padding {
+    padding: 16px;
+  }
+}

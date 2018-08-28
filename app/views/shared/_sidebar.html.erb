@@ -13,39 +13,29 @@
 		<nav class="side-nav">
 			<ul class="sidebar-menu tree nav nav-stacked" data-plugin="metis">
 				<li class="tree-item nav-item">
-					<a href="#" class="tree-link nav-link" aria-expanded="false">
-						<%= mi.reorder %>
-						<span class="nav-title">From Loop</span>
-						<span class="nav-tools"><%= mi.chevron_left %></span>
-					</a>
-					<ul class="nav-sub collapse nav-stacked" aria-expanded="false">
-						<li><a href="#">Sub item</a></li>
-					</ul>
+					<%= link_to root_path, :class => "tree-link nav-link" do %>
+						<span class="nav-icon"><i class="material-icons">build</i></span>
+						<span class="nav-title">Index</span>
+					<% end %>
 				</li>
 				<li class="tree-item nav-item">
-					<a href="#" class="tree-link nav-link active">
-						<span class="nav-icon"><i class="material-icons">rowing</i></span>
-						<span class="nav-title">From Loop</span>
-					</a>
+					<%= link_to theme_path, :class => "tree-link nav-link" do %>
+						<span class="nav-icon"><i class="material-icons">class</i></span>
+						<span class="nav-title">Theme</span>
+					<% end %>
 				</li>
 				<li class="tree-item nav-item">
-					<a href="#" class="tree-link nav-link" aria-expanded="false">
-						<%= mi.reorder %>
-						<span class="nav-title">From Loop</span>
-						<span class="nav-tools"><%= mi.chevron_left %></span>
-					</a>
-					<ul class="nav-sub collapse nav-stacked" aria-expanded="false">
-						<li><a href="#">Sub item</a></li>
-					</ul>
+					<%= link_to login_path, :class => "tree-link nav-link" do %>
+						<span class="nav-icon"><i class="material-icons">work</i></span>
+						<span class="nav-title">Login</span>
+					<% end %>
 				</li>
-				<% $nav.each do |i| %>
-					<li class="tree-item nav-item">
-						<a href="#" class="tree-link nav-link">
-							<span class="nav-icon"><i class="material-icons"><%= i %></i></span>
-							<span class="nav-title">From Loop</span>
-						</a>
-					</li>
-				<% end %>
+				<li class="tree-item nav-item">
+					<%= link_to register_path, :class => "tree-link nav-link" do %>
+						<span class="nav-icon"><i class="material-icons">data_usage</i></span>
+						<span class="nav-title">Register</span>
+					<% end %>
+				</li>
 			</ul>
 		</nav>
 	</div>

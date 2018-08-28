@@ -6,4 +6,3 @@
 
 //= require plugin/metisMenu
 //= require plugin/ps
-//= require app/main

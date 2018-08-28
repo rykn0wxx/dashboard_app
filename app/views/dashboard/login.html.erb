@@ -1,2 +1,40 @@
-<h1>Dashboard#login</h1>
-<p>Find me in app/views/dashboard/login.html.erb</p>
+<% title "Index", false, false  %>
+
+<section class="auth-box">
+
+	<div class="auth-bg" style="background-image:url(<%= image_path('old-typewriter.jpg') %>)"></div>
+	<div class="login-card card">
+		<div class="card-header">
+			<span class="banner">
+				<b>admin</b>istrate
+			</span>
+		</div>
+		<div class="card-body">
+			<form class="form-material" data-mudhead-form="true">
+				<p class="auth-msg">Sign in to start your session</p>
+
+				<div class="md-wrapper fw">
+					<input type="text" class="md-input" />
+					<label class="md-label" >Username</label>
+					<div class="md-ripple"></div>
+				</div>
+
+				<div class="md-wrapper fw">
+					<input type="password" class="md-input" />
+					<label class="md-label" >Password</label>
+					<div class="md-ripple"></div>
+				</div>
+
+				<div class="md-wrapper">
+					<input type="submit" role="button" class="md-btn md-raised" />
+				</div>
+				<div>
+					<div class="col-xs-12">
+						<small>Don't have an account?</small>
+						<b><a href="#" class="text-primary">Register</a></b>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>

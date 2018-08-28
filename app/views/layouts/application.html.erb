@@ -19,19 +19,21 @@
     <%= csp_meta_tag %>
 
 		<%= render "shared/styles_css" %>
+
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="show-sidebar">
+  <body class="show-sidebar <%= controller.action_name %>">
 
-		<div class="md-content"> <!-- wrapper -->
+		<div class="md-content wrapper"> <!-- wrapper -->
 
 			<div class="layout-row">
 
-				<%= render "shared/sidebar" %>
+				<%= render "shared/sidebar" if show_sidebar? %>
 
 				<div class="layout-column flex content-wrapper">
 
-					<%= render "shared/topbar" %>
+					<%= render "shared/topbar" if show_topbar? %>
 
 					<main class="main-content">
 						<%= yield %>

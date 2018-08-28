@@ -34,7 +34,7 @@ $sidebar-bg-light: #9aa4ac;
 		position: relative;
 		overflow: hidden;
 		flex: 1 1 auto;
-		flex-basis: auto;
+		flex-basis: 0;
 		.side-nav {
 			.sidebar-menu {
 				flex-direction: column;
@@ -77,7 +77,7 @@ $sidebar-bg-light: #9aa4ac;
 	}
 	a {
 		transition: $base-transition;
-		background-color: mix(#000000, $sidebar-bg-dark, 30%);;
+		background-color: mix(#000000, $sidebar-bg-dark, 30%);
 		color: rgba($off-white, 0.7);
 	}
 }
@@ -176,7 +176,7 @@ $sidebar-bg-light: #9aa4ac;
 						> li {
 							&.tree-item {
 								> a {
-									background-color: $sidebar-bg-dark;
+									background-color: mix(#000000, $sidebar-bg-dark, 30%);;
 									// text-align: center;
 									> .nav-title, > .nav-tools {
 										display: none;

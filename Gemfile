@@ -27,3 +27,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby, :ruby]
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'material_icons', '~> 2.2', '>= 2.2.1'
 gem 'bootstrap', '~> 4.1.3'
+
+gem 'simple_form', '~> 4.0', '>= 4.0.1'
